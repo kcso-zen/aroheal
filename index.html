@@ -3,546 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AroHeal 香推療癒 | 專業芳療・推拿・身心靈療癒</title>
+<title>AroHeal 香推療癒 | 芳療・推拿・身心舒緩</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --coral: #FF6B6B;
-    --coral-light: #FFE8E8;
-    --purple: #8B5CF6;
-    --purple-light: #EDE9FE;
-    --sage: #6EE7B7;
-    --sage-dark: #059669;
-    --lavender: #C4B5FD;
-    --cream: #FFFBF7;
-    --dark: #1E1B4B;
-    --mid: #4C4780;
-    --gold: #F59E0B;
-  }
+:root {
+  --coral:#FF6B6B; --coral-light:#FFE8E8;
+  --purple:#8B5CF6; --purple-light:#EDE9FE;
+  --sage:#6EE7B7; --sage-dark:#059669;
+  --lavender:#C4B5FD; --cream:#FFFBF7;
+  --dark:#1E1B4B; --mid:#4C4780; --gold:#F59E0B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(255,251,247,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,92,246,0.12);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--coral),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--mid);font-size:0.85rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--coral);}
+.nav-cta{background:linear-gradient(135deg,var(--coral),var(--purple));color:white!important;padding:8px 20px;border-radius:50px;font-weight:600!important;}
 
-  html { scroll-behavior: smooth; }
+/* HERO */
+#hero{min-height:100vh;background:linear-gradient(160deg,#fff9f9 0%,#f5f3ff 50%,#ecfdf5 100%);display:flex;align-items:center;justify-content:center;padding:100px 5% 60px;position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.08) 0%,transparent 70%);border-radius:50%;}
+.hero-inner{max-width:800px;text-align:center;animation:fadeUp 0.9s ease both;}
+.hero-badge{display:inline-block;background:var(--purple-light);color:var(--purple);font-size:0.8rem;font-weight:600;padding:6px 18px;border-radius:50px;letter-spacing:0.05em;margin-bottom:20px;}
+.hero-avatar{width:140px;height:140px;border-radius:50%;border:5px solid white;box-shadow:0 8px 32px rgba(139,92,246,0.25);margin:0 auto 20px;display:block;object-fit:cover;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;background:linear-gradient(135deg,var(--dark) 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.hero-sub{font-size:1.05rem;color:var(--coral);font-weight:500;margin-bottom:20px;letter-spacing:0.06em;}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:18px;}
+.hero-tag{background:white;border:1.5px solid var(--lavender);color:var(--mid);font-size:0.82rem;padding:6px 16px;border-radius:50px;box-shadow:0 2px 8px rgba(139,92,246,0.08);}
+.hero-bio{font-size:0.95rem;color:var(--mid);line-height:1.9;max-width:560px;margin:0 auto 10px;}
+.hero-bio-cn{font-size:0.88rem;color:#7C8DB5;margin-bottom:24px;}
+.hero-loc{font-size:0.82rem;color:#9CA3AF;margin-bottom:28px;}
+.btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:linear-gradient(135deg,var(--coral),var(--purple));color:white;padding:14px 32px;border-radius:50px;font-size:0.95rem;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(255,107,107,0.3);transition:transform 0.2s;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-secondary{background:white;color:var(--purple);padding:14px 32px;border-radius:50px;font-size:0.95rem;font-weight:600;text-decoration:none;border:2px solid var(--lavender);}
+.btn-secondary:hover{background:var(--purple-light);}
 
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background: var(--cream);
-    color: var(--dark);
-    overflow-x: hidden;
-  }
+/* PHOTO STRIP */
+.photo-strip{display:grid;grid-template-columns:repeat(4,1fr);height:200px;overflow:hidden;}
+.photo-strip img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;display:block;}
+.photo-strip img:hover{transform:scale(1.05);}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(255,251,247,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(139,92,246,0.12);
-    padding: 14px 5%;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .nav-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700;
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--mid);
-    font-size: 0.85rem; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--coral); }
-  .nav-cta {
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    color: white !important; padding: 8px 20px;
-    border-radius: 50px; font-weight: 600 !important;
-    transition: opacity 0.2s !important;
-  }
-  .nav-cta:hover { opacity: 0.85; color: white !important; }
+/* SECTIONS */
+section{padding:72px 5%;}
+.container{max-width:1100px;margin:0 auto;}
+.sec-label{display:inline-block;background:var(--purple-light);color:var(--purple);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;padding:4px 14px;border-radius:50px;margin-bottom:14px;text-transform:uppercase;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:14px;}
+.sec-desc{font-size:0.92rem;color:var(--mid);line-height:1.8;max-width:640px;margin-bottom:36px;}
+.center{text-align:center;}
+.center .sec-desc{margin:0 auto 36px;}
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    background: linear-gradient(160deg, #fff9f9 0%, #f5f3ff 50%, #ecfdf5 100%);
-    display: flex; align-items: center; justify-content: center;
-    padding: 100px 5% 60px;
-    position: relative; overflow: hidden;
-  }
-  #hero::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  #hero::after {
-    content: '';
-    position: absolute; bottom: -80px; left: -80px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,107,107,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-inner {
-    max-width: 800px; text-align: center;
-    animation: fadeUp 0.9s ease both;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: var(--purple-light);
-    color: var(--purple); font-size: 0.8rem; font-weight: 600;
-    padding: 6px 18px; border-radius: 50px;
-    letter-spacing: 0.05em; margin-bottom: 24px;
-  }
-  .hero-avatar {
-    width: 130px; height: 130px;
-    border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 8px 32px rgba(139,92,246,0.2);
-    margin: 0 auto 20px;
-    display: block; object-fit: cover;
-    background: linear-gradient(135deg, var(--coral-light), var(--purple-light));
-    overflow: hidden;
-  }
-  .hero-avatar-placeholder {
-    width: 130px; height: 130px; border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 8px 32px rgba(139,92,246,0.2);
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, var(--coral-light), var(--purple-light));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
-  }
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: 700; line-height: 1.2;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--purple) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
-  .hero-subtitle-cn {
-    font-size: 1.05rem; color: var(--coral);
-    font-weight: 500; margin-bottom: 20px; letter-spacing: 0.06em;
-  }
-  .hero-tags {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
-    margin-bottom: 18px;
-  }
-  .hero-tag {
-    background: white; border: 1.5px solid var(--lavender);
-    color: var(--mid); font-size: 0.82rem; font-weight: 500;
-    padding: 6px 16px; border-radius: 50px;
-    box-shadow: 0 2px 8px rgba(139,92,246,0.08);
-  }
-  .hero-bio {
-    font-size: 0.95rem; color: var(--mid); line-height: 1.8;
-    max-width: 580px; margin: 0 auto 28px;
-  }
-  .hero-bio-cn {
-    font-size: 0.88rem; color: #7C8DB5; margin-top: 6px;
-  }
-  .hero-location {
-    font-size: 0.82rem; color: #9CA3AF; margin-bottom: 28px;
-  }
-  .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    color: white; padding: 14px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 600;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: 0 4px 20px rgba(255,107,107,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,107,0.4); }
-  .btn-secondary {
-    background: white; color: var(--purple);
-    padding: 14px 32px; border-radius: 50px;
-    font-size: 0.95rem; font-weight: 600;
-    text-decoration: none; border: 2px solid var(--lavender);
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .btn-secondary:hover { background: var(--purple-light); border-color: var(--purple); }
+/* ABOUT */
+#about{background:white;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+.about-img-wrap{border-radius:24px;overflow:hidden;height:380px;box-shadow:0 12px 40px rgba(139,92,246,0.15);}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.about-text p{font-size:0.93rem;color:var(--mid);line-height:1.9;margin-bottom:16px;}
+.warm-box{background:var(--coral-light);border-radius:16px;padding:20px 24px;margin-top:20px;border-left:4px solid var(--coral);}
+.warm-box p{font-size:0.9rem;color:var(--mid);line-height:1.8;margin:0;font-style:italic;}
 
-  /* ── SECTIONS COMMON ── */
-  section { padding: 72px 5%; }
-  .section-label {
-    display: inline-block; background: var(--purple-light);
-    color: var(--purple); font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.1em; padding: 4px 14px; border-radius: 50px;
-    margin-bottom: 14px; text-transform: uppercase;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
-    font-weight: 700; color: var(--dark); line-height: 1.3;
-    margin-bottom: 14px;
-  }
-  .section-desc {
-    font-size: 0.95rem; color: var(--mid); line-height: 1.8;
-    max-width: 640px; margin-bottom: 40px;
-  }
-  .container { max-width: 1100px; margin: 0 auto; }
+/* PHILOSOPHY */
+#philosophy{background:linear-gradient(160deg,#f5f3ff,#ecfdf5);}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.phil-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.05);transition:transform 0.3s;}
+.phil-card:hover{transform:translateY(-4px);}
+.phil-card img{width:100%;height:150px;object-fit:cover;}
+.phil-card-body{padding:20px;}
+.phil-card-body h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.phil-card-body p{font-size:0.87rem;color:var(--mid);line-height:1.8;}
 
-  /* ── ABOUT ── */
-  #about { background: white; }
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center;
-  }
-  .about-img {
-    border-radius: 24px; overflow: hidden;
-    background: linear-gradient(160deg, var(--coral-light), var(--purple-light));
-    height: 360px; display: flex; align-items: center; justify-content: center;
-    font-size: 5rem;
-    box-shadow: 0 12px 40px rgba(139,92,246,0.12);
-  }
-  .about-text p { font-size: 0.95rem; color: var(--mid); line-height: 1.9; margin-bottom: 16px; }
-  .cert-box {
-    background: var(--purple-light); border-radius: 16px; padding: 20px 24px; margin-top: 20px;
-  }
-  .cert-box h4 { color: var(--purple); font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; }
-  .cert-list { list-style: none; }
-  .cert-list li {
-    font-size: 0.88rem; color: var(--mid); padding: 5px 0;
-    border-bottom: 1px solid rgba(139,92,246,0.12);
-  }
-  .cert-list li::before { content: "✦ "; color: var(--purple); }
-  .cert-list li:last-child { border-bottom: none; }
+/* SERVICES */
+#services{background:white;}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.svc-card{border-radius:20px;overflow:hidden;border:1.5px solid var(--lavender);transition:box-shadow 0.2s,transform 0.2s;}
+.svc-card:hover{box-shadow:0 8px 28px rgba(139,92,246,0.15);transform:translateY(-2px);}
+.svc-card img{width:100%;height:170px;object-fit:cover;}
+.svc-body{padding:20px 22px;}
+.svc-body h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.svc-body p{font-size:0.87rem;color:var(--mid);line-height:1.8;}
+.svc-dur{display:inline-block;margin-top:10px;background:var(--purple-light);color:var(--purple);font-size:0.78rem;font-weight:600;padding:4px 12px;border-radius:50px;}
+.svc-note{margin-top:24px;padding:18px 22px;background:var(--purple-light);border-radius:16px;font-size:0.9rem;color:var(--mid);line-height:1.8;}
 
-  /* ── PHILOSOPHY ── */
-  #philosophy {
-    background: linear-gradient(160deg, #f5f3ff 0%, #ecfdf5 100%);
-  }
-  .philosophy-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-  .phil-card {
-    background: white; border-radius: 20px; padding: 28px 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    border-top: 3px solid transparent;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .phil-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.09); }
-  .phil-card:nth-child(1) { border-top-color: var(--sage-dark); }
-  .phil-card:nth-child(2) { border-top-color: var(--coral); }
-  .phil-card:nth-child(3) { border-top-color: var(--purple); }
-  .phil-icon { font-size: 2rem; margin-bottom: 12px; }
-  .phil-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
-  .phil-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.8; }
+/* OILS */
+#oils{background:#FAFAFA;}
+.oils-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.oil-card{background:white;border-radius:20px;overflow:hidden;border:1.5px solid var(--lavender);transition:transform 0.3s,box-shadow 0.3s;}
+.oil-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(139,92,246,0.1);}
+.oil-card img{width:100%;height:150px;object-fit:cover;}
+.oil-body{padding:18px 20px;}
+.oil-name{font-weight:700;color:var(--dark);margin-bottom:8px;font-size:0.95rem;}
+.oil-body p{font-size:0.87rem;color:var(--mid);line-height:1.8;}
 
-  /* ── SERVICES ── */
-  #services { background: white; }
-  .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-  .service-card {
-    border: 1.5px solid var(--lavender); border-radius: 18px; padding: 26px 24px;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-    cursor: default;
-  }
-  .service-card:hover {
-    border-color: var(--purple);
-    box-shadow: 0 8px 28px rgba(139,92,246,0.12);
-    transform: translateY(-2px);
-  }
-  .service-icon { font-size: 1.8rem; margin-bottom: 10px; }
-  .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .service-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.8; }
-  .service-duration {
-    display: inline-block; margin-top: 12px;
-    background: var(--purple-light); color: var(--purple);
-    font-size: 0.78rem; font-weight: 600; padding: 4px 12px; border-radius: 50px;
-  }
+/* SHARING */
+#sharing{background:linear-gradient(160deg,#fff9f9,#f5f3ff);}
+.share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.share-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.04);transition:transform 0.3s;}
+.share-card:hover{transform:translateY(-4px);}
+.share-card img{width:100%;height:150px;object-fit:cover;}
+.share-body{padding:20px;text-align:center;}
+.share-body h3{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.share-body p{font-size:0.87rem;color:var(--mid);line-height:1.8;}
 
-  /* ── AROMATHERAPY INFO ── */
-  #aromatherapy { background: linear-gradient(160deg, #fff9f9, #f5f3ff); }
-  .aroma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .aroma-img {
-    border-radius: 24px; overflow: hidden;
-    background: linear-gradient(160deg, #fff0f0, #ede9fe);
-    height: 300px; display: flex; align-items: center; justify-content: center;
-    font-size: 5rem;
-    box-shadow: 0 12px 40px rgba(255,107,107,0.12);
-  }
-  .highlight-box {
-    background: var(--purple-light); border-left: 4px solid var(--purple);
-    border-radius: 0 12px 12px 0; padding: 14px 18px; margin-top: 18px;
-    font-size: 0.9rem; color: var(--mid); line-height: 1.7;
-  }
+/* ACUPRESSURE */
+#acupressure{background:white;}
+.acu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.acu-card{border:1.5px solid var(--lavender);border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;transition:border-color 0.2s;}
+.acu-card:hover{border-color:var(--coral);}
+.acu-num{width:42px;height:42px;min-width:42px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--purple));display:flex;align-items:center;justify-content:center;color:white;font-size:0.78rem;font-weight:700;text-align:center;line-height:1.2;}
+.acu-card h3{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:5px;}
+.acu-card p{font-size:0.87rem;color:var(--mid);line-height:1.7;}
 
-  /* ── TUINA ── */
-  #tuina { background: white; }
-  .tuina-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .tuina-steps { list-style: none; }
-  .tuina-steps li {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 16px 0; border-bottom: 1px solid #F0EEFF;
-  }
-  .tuina-steps li:last-child { border-bottom: none; }
-  .step-num {
-    width: 32px; height: 32px; min-width: 32px;
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    border-radius: 50%; color: white; font-weight: 700; font-size: 0.85rem;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .step-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-  .step-text p { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
+/* CARE */
+#care{background:linear-gradient(160deg,#f5f3ff,#ecfdf5);}
+.care-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.care-col{background:white;border-radius:20px;padding:28px;box-shadow:0 4px 16px rgba(0,0,0,0.04);}
+.care-col h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:16px;}
+.care-list{list-style:none;}
+.care-list li{font-size:0.88rem;color:var(--mid);padding:8px 0 8px 20px;border-bottom:1px solid #F0EEFF;line-height:1.7;position:relative;}
+.care-list li::before{content:"•";position:absolute;left:0;color:var(--coral);font-weight:700;}
+.care-list li:last-child{border-bottom:none;}
+.care-tip{margin-top:24px;background:#ECFDF5;border-radius:12px;padding:14px 18px;font-size:0.88rem;color:var(--sage-dark);line-height:1.7;}
 
-  /* ── UNIQUE COMBO ── */
-  #combo { background: linear-gradient(160deg, #ecfdf5, #f5f3ff); }
-  .combo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-  .combo-card {
-    background: white; border-radius: 20px; padding: 28px 22px; text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    transition: transform 0.3s;
-  }
-  .combo-card:hover { transform: translateY(-4px); }
-  .combo-img {
-    width: 80px; height: 80px; border-radius: 16px;
-    background: var(--coral-light); margin: 0 auto 16px;
-    display: flex; align-items: center; justify-content: center; font-size: 2.2rem;
-  }
-  .combo-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .combo-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
+/* FAQ */
+#faq{background:white;}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.faq-card{background:#FAFAFA;border-radius:16px;padding:22px;border-left:4px solid var(--lavender);transition:border-color 0.2s;}
+.faq-card:hover{border-left-color:var(--purple);}
+.faq-card h4{font-size:0.92rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.faq-card p{font-size:0.87rem;color:var(--mid);line-height:1.8;}
 
-  /* ── OILS ── */
-  #oils { background: white; }
-  .oils-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-  .oil-card {
-    border-radius: 20px; padding: 24px 20px;
-    border: 1.5px solid var(--lavender);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .oil-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(139,92,246,0.1); }
-  .oil-name { font-weight: 700; color: var(--dark); margin-bottom: 8px; font-size: 1rem; }
-  .oil-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.8; }
+/* CONTACT */
+#contact{background:linear-gradient(160deg,var(--dark),#2D2867);color:white;}
+#contact .sec-label{background:rgba(255,255,255,0.12);color:var(--lavender);}
+#contact .sec-title{color:white;}
+#contact .sec-desc{color:rgba(255,255,255,0.65);}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+.contact-item{text-align:center;}
+.contact-icon{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 14px;}
+.contact-item h4{font-size:0.9rem;font-weight:600;color:var(--lavender);margin-bottom:8px;}
+.contact-item p{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.8;}
+.contact-item a{color:var(--sage);text-decoration:none;}
+.socials{display:flex;justify-content:center;gap:14px;margin-top:40px;flex-wrap:wrap;}
+.soc-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;text-decoration:none;transition:transform 0.2s;}
+.soc-btn:hover{transform:translateY(-2px);}
+.soc-x{background:#1DA1F2;color:white;}
+.soc-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:white;}
+.soc-wa{background:#25D366;color:white;}
+.tbc{background:rgba(245,158,11,0.2);color:var(--gold);font-size:0.7rem;padding:2px 8px;border-radius:50px;font-weight:600;}
 
-  /* ── PROCESS ── */
-  #process { background: linear-gradient(160deg, #f5f3ff, #ecfdf5); }
-  .process-steps {
-    display: flex; gap: 0; overflow-x: auto; padding-bottom: 12px;
-  }
-  .process-step {
-    flex: 1; min-width: 160px; text-align: center; position: relative; padding: 0 16px;
-  }
-  .process-step:not(:last-child)::after {
-    content: '→';
-    position: absolute; right: -8px; top: 28px;
-    color: var(--lavender); font-size: 1.5rem;
-  }
-  .process-circle {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    margin: 0 auto 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; color: white;
-    box-shadow: 0 4px 16px rgba(139,92,246,0.25);
-  }
-  .process-step h4 { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-  .process-step p { font-size: 0.8rem; color: var(--mid); line-height: 1.6; }
-  .process-note {
-    text-align: center; margin-top: 28px;
-    font-size: 0.88rem; color: var(--mid);
-    background: white; border-radius: 12px; padding: 14px 24px;
-    display: inline-block;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
+footer{background:#0F0D2E;color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:0.82rem;}
+footer span{color:var(--coral);}
 
-  /* ── SUITABLE FOR ── */
-  #suitable { background: white; }
-  .suitable-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .suitable-card {
-    border: 1.5px solid var(--lavender); border-radius: 16px; padding: 20px 22px;
-    display: flex; gap: 16px; align-items: flex-start;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .suitable-card:hover { border-color: var(--purple); box-shadow: 0 4px 16px rgba(139,92,246,0.1); }
-  .suitable-icon {
-    width: 42px; height: 42px; min-width: 42px; border-radius: 12px;
-    background: var(--purple-light);
-    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
-  }
-  .suitable-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
-  .suitable-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ── TESTIMONIALS ── */
-  #testimonials { background: linear-gradient(160deg, #f5f3ff, #fff9f9); }
-  .stats-row {
-    display: flex; justify-content: center; gap: 60px; margin-bottom: 50px;
-    flex-wrap: wrap;
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem; font-weight: 700;
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    display: block;
-  }
-  .stat-label { font-size: 0.85rem; color: var(--mid); margin-top: 4px; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-  .testi-card {
-    background: white; border-radius: 20px; padding: 28px 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border: 1.5px solid transparent;
-    position: relative;
-  }
-  .testi-card:nth-child(1) { border-color: rgba(99,210,180,0.3); }
-  .testi-card:nth-child(2) { border-color: rgba(255,107,107,0.3); }
-  .testi-card:nth-child(3) { border-color: rgba(139,92,246,0.3); }
-  .testi-quote {
-    font-size: 2.5rem; color: var(--lavender); line-height: 1;
-    font-family: Georgia, serif; margin-bottom: 6px;
-  }
-  .testi-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
-  .testi-author { font-size: 0.85rem; font-weight: 700; color: var(--dark); }
-
-  /* ── PRICING ── */
-  #pricing { background: white; }
-  table {
-    width: 100%; border-collapse: collapse;
-    border-radius: 16px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  }
-  thead tr { background: linear-gradient(135deg, var(--purple), var(--coral)); }
-  thead th { color: white; padding: 16px 20px; font-size: 0.9rem; font-weight: 600; text-align: left; }
-  tbody tr { border-bottom: 1px solid #F0EEFF; transition: background 0.2s; }
-  tbody tr:hover { background: var(--purple-light); }
-  tbody td { padding: 14px 20px; font-size: 0.9rem; color: var(--mid); }
-  tbody td:first-child { font-weight: 600; color: var(--dark); }
-  .tbc-cell { color: var(--gold); font-weight: 600; font-size: 0.85rem; }
-  .pricing-note {
-    margin-top: 18px; padding: 14px 20px;
-    background: #ECFDF5; border-radius: 12px;
-    font-size: 0.88rem; color: var(--sage-dark); line-height: 1.7;
-  }
-
-  /* ── FAQ ── */
-  #faq { background: linear-gradient(160deg, #f5f3ff, #ecfdf5); }
-  .faq-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
-  .faq-card {
-    background: white; border-radius: 16px; padding: 22px 22px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    border-left: 4px solid var(--lavender);
-    transition: border-color 0.2s;
-  }
-  .faq-card:hover { border-left-color: var(--purple); }
-  .faq-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .faq-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.8; }
-
-  /* ── CARE NOTES ── */
-  #care { background: white; }
-  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .care-col h3 {
-    font-size: 1rem; font-weight: 700; color: var(--dark);
-    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
-  }
-  .care-list { list-style: none; }
-  .care-list li {
-    font-size: 0.88rem; color: var(--mid); padding: 8px 0;
-    border-bottom: 1px solid #F0EEFF; line-height: 1.7;
-    padding-left: 20px; position: relative;
-  }
-  .care-list li::before {
-    content: "•";
-    position: absolute; left: 0;
-    color: var(--coral); font-weight: 700;
-  }
-  .care-list li:last-child { border-bottom: none; }
-  .care-tip {
-    margin-top: 24px; background: #ECFDF5;
-    border-radius: 12px; padding: 14px 18px;
-    font-size: 0.88rem; color: var(--sage-dark); line-height: 1.7;
-  }
-
-  /* ── STUDIO ── */
-  #studio { background: linear-gradient(160deg, #f5f3ff, #ecfdf5); }
-  .studio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-  .studio-card {
-    background: white; border-radius: 18px; padding: 24px 22px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-    text-align: center;
-  }
-  .studio-icon { font-size: 2rem; margin-bottom: 12px; }
-  .studio-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .studio-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.8; }
-
-  /* ── ACUPRESSURE ── */
-  #acupressure { background: white; }
-  .acupress-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
-  .acu-card {
-    border: 1.5px solid var(--lavender); border-radius: 16px; padding: 20px 22px;
-    display: flex; gap: 16px; align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-  .acu-card:hover { border-color: var(--coral); }
-  .acu-icon {
-    width: 40px; height: 40px; min-width: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--coral), var(--purple));
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 0.8rem; font-weight: 700;
-  }
-  .acu-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
-  .acu-card p { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
-
-  /* ── CONTACT ── */
-  #contact { background: linear-gradient(160deg, var(--dark), #2D2867); color: white; }
-  #contact .section-label { background: rgba(255,255,255,0.12); color: var(--lavender); }
-  #contact .section-title { color: white; }
-  #contact .section-desc { color: rgba(255,255,255,0.65); }
-  .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
-  .contact-item { text-align: center; }
-  .contact-icon {
-    width: 52px; height: 52px; border-radius: 16px;
-    background: rgba(255,255,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; margin: 0 auto 14px;
-  }
-  .contact-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--lavender); margin-bottom: 8px; }
-  .contact-item p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
-  .contact-item a { color: var(--sage); text-decoration: none; }
-  .contact-item a:hover { text-decoration: underline; }
-  .contact-socials {
-    display: flex; justify-content: center; gap: 14px; margin-top: 40px; flex-wrap: wrap;
-  }
-  .social-btn {
-    display: flex; align-items: center; gap: 8px;
-    padding: 12px 24px; border-radius: 50px;
-    font-size: 0.88rem; font-weight: 600; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .social-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-  .social-x { background: #1DA1F2; color: white; }
-  .social-ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
-  .social-wa { background: #25D366; color: white; }
-  .tbc-tag {
-    background: rgba(245,158,11,0.2); color: var(--gold);
-    font-size: 0.7rem; padding: 2px 8px; border-radius: 50px; font-weight: 600;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #0F0D2E; color: rgba(255,255,255,0.5);
-    text-align: center; padding: 24px;
-    font-size: 0.82rem;
-  }
-  footer span { color: var(--coral); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .about-grid, .aroma-grid, .tuina-grid, .care-grid { grid-template-columns: 1fr; }
-    .philosophy-grid, .combo-grid, .studio-grid, .oils-grid { grid-template-columns: 1fr; }
-    .services-grid, .faq-grid, .suitable-grid, .acupress-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .stats-row { gap: 30px; }
-    .process-steps { flex-direction: column; }
-    .process-step::after { display: none; }
-  }
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .about-grid,.care-grid{grid-template-columns:1fr;}
+  .phil-grid,.share-grid,.oils-grid{grid-template-columns:1fr;}
+  .svc-grid,.faq-grid,.acu-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .photo-strip{grid-template-columns:repeat(2,1fr);height:280px;}
+}
 </style>
 </head>
 <body>
@@ -553,9 +179,9 @@
   <ul class="nav-links">
     <li><a href="#about">關於我</a></li>
     <li><a href="#services">服務</a></li>
-    <li><a href="#pricing">收費</a></li>
+    <li><a href="#oils">精油</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">立即預約</a></li>
+    <li><a href="#contact" class="nav-cta">聯絡我</a></li>
   </ul>
 </nav>
 
@@ -563,47 +189,49 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-badge">✦ 香推療癒 · AroHeal</div>
-    <div class="hero-avatar-placeholder">🌸</div>
-    <!-- 換成真實頭像時，用這行替換上面 div：
-    <img src="your-photo.jpg" alt="V" class="hero-avatar"> -->
+    <img class="hero-avatar"
+      src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop"
+      alt="AroHeal"
+      onerror="this.style.display='none'">
     <h1 class="hero-title">AroHeal</h1>
-    <p class="hero-subtitle-cn">香推療癒</p>
+    <p class="hero-sub">香推療癒</p>
     <div class="hero-tags">
-      <span class="hero-tag">🌸 專業芳療</span>
-      <span class="hero-tag">🙌 傳統推拿</span>
-      <span class="hero-tag">🌿 全方位健康管理</span>
+      <span class="hero-tag">🌸 芳香療法</span>
+      <span class="hero-tag">🙌 推拿按摩</span>
+      <span class="hero-tag">🌿 身心舒緩</span>
     </div>
-    <div class="hero-bio">
-      Professional Aromatherapy | Traditional Tuina | Holistic Health Practitioner 🧘‍♀️<br>
-      Helping you live a pain-free, stress-free life through natural therapy.
-      <div class="hero-bio-cn">透過自然療法，助您遠離疼痛與壓力，重拾健康生活。</div>
-    </div>
-    <p class="hero-location">📍 Hong Kong</p>
+    <p class="hero-bio">以香氛與推拿，為身邊人帶來舒緩與療癒 🌸<br>興趣出發，用心服務，持續學習中。</p>
+    <p class="hero-bio-cn">透過自然療法，為家人與朋友帶來放鬆與舒適。</p>
+    <p class="hero-loc">📍 Hong Kong</p>
     <div class="btn-group">
-      <a href="#contact" class="btn-primary">立即預約療程</a>
-      <a href="#services" class="btn-secondary">探索服務項目</a>
+      <a href="#contact" class="btn-primary">聯絡我</a>
+      <a href="#services" class="btn-secondary">了解更多</a>
     </div>
   </div>
 </section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop" alt="massage" onerror="this.parentElement.style.background='#f5f3ff'">
+  <img src="https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop" alt="oils" onerror="this.parentElement.style.background='#ffe8e8'">
+  <img src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop" alt="spa" onerror="this.parentElement.style.background='#ecfdf5'">
+  <img src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=400&h=220&fit=crop" alt="wellness" onerror="this.parentElement.style.background='#ede9fe'">
+</div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img">🌿</div>
+      <div class="about-img-wrap">
+        <img src="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="About AroHeal">
+      </div>
       <div class="about-text">
-        <span class="section-label">關於我</span>
-        <h2 class="section-title">我的療癒之旅與專業資歷</h2>
-        <p>我投入芳香療法與推拿按摩領域逾十年，持有國際芳療師認證（IFPA）及中醫推拿調理師資格。從最初對精油的一份好奇，到深入研習東方經絡學說，這段旅程讓我深信：真正的療癒，來自身體、情緒與靈性的全面平衡。</p>
-        <p>每一位走進工作室的客人，都是我用心傾聽與服務的對象。</p>
-        <div class="cert-box">
-          <h4>專業認證</h4>
-          <ul class="cert-list">
-            <li>IFPA 國際芳療師認證</li>
-            <li>中醫推拿調理師資格</li>
-            <li>十年以上臨床服務經驗</li>
-            <li>持續進修芳療與經絡課程</li>
-          </ul>
+        <span class="sec-label">關於我</span>
+        <h2 class="sec-title">興趣出發，用心療癒</h2>
+        <p>接觸芳療與推拿按摩已有多年，起初純粹出於對天然精油的好奇與喜愛，慢慢深入了解東方經絡與推拿的智慧，發現兩者結合原來可以為身心帶來意想不到的舒緩效果。</p>
+        <p>我並非全職治療師，而是以個人興趣與熱誠，為身邊的家人及朋友提供輕鬆舒適的療癒體驗。學習的路仍在繼續，每一次服務都是一次成長。</p>
+        <div class="warm-box">
+          <p>「療癒不一定要去診所，有時候一雙溫暖的手、一縷精油香氣，已經足夠讓人放鬆下來。」</p>
         </div>
       </div>
     </div>
@@ -611,109 +239,25 @@
 </section>
 
 <!-- PHILOSOPHY -->
-<section id="philosophy">
+<section id="philosophy" style="background:linear-gradient(160deg,#f5f3ff,#ecfdf5);">
   <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">我的理念</span>
-      <h2 class="section-title">東方智慧 × 西方芳療的整體療癒哲學</h2>
-      <p class="section-desc" style="margin:0 auto;">我相信身體擁有與生俱來的自癒能力，療癒師的角色是創造最佳條件，讓這份力量重新甦醒。</p>
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">我的理念</span>
+      <h2 class="sec-title">東方智慧 × 西方芳療</h2>
+      <p class="sec-desc center">我相信最好的療癒，往往來自最簡單的方式——一雙手、一瓶精油、一份用心。</p>
     </div>
-    <div class="philosophy-grid">
+    <div class="phil-grid">
       <div class="phil-card">
-        <div class="phil-icon">🌿</div>
-        <h3>東方根基</h3>
-        <p>以中醫陰陽五行為基礎，透過經絡疏通調和氣血，恢復身體自然流動。</p>
-      </div>
-      <div class="phil-card">
-        <div class="phil-icon">🌸</div>
-        <h3>西方芳療</h3>
-        <p>運用植物精油的生化特性，透過嗅覺與皮膚吸收，深層影響身心情緒狀態。</p>
+        <img src="https://images.pexels.com/photos/4473622/pexels-photo-4473622.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&fit=crop" alt="東方根基">
+        <div class="phil-card-body"><h3>🌿 東方根基</h3><p>以中醫經絡理論為基礎，透過推拿疏通氣血，幫助身體恢復自然的平衡狀態。</p></div>
       </div>
       <div class="phil-card">
-        <div class="phil-icon">✨</div>
-        <h3>整體療癒</h3>
-        <p>不只處理症狀，更關注根源。每次療程都是一次身心靈全面重整的深度旅程。</p>
+        <img src="https://images.pexels.com/photos/6663573/pexels-photo-6663573.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&fit=crop" alt="西方芳療">
+        <div class="phil-card-body"><h3>🌸 西方芳療</h3><p>運用天然植物精油，透過香氣與皮膚吸收，讓身心情緒得到深層的舒緩與放鬆。</p></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- AROMATHERAPY -->
-<section id="aromatherapy">
-  <div class="container">
-    <div class="aroma-grid">
-      <div class="aroma-text">
-        <span class="section-label">芳香療法</span>
-        <h2 class="section-title">什麼是芳香療法？精油如何喚醒身體自癒力</h2>
-        <p style="font-size:0.95rem; color:var(--mid); line-height:1.9;">芳香療法（Aromatherapy）是運用從植物萃取的天然精油，透過嗅吸與皮膚按摩兩大途徑，作用於大腦邊緣系統與全身細胞，啟動深層放鬆與自我修復機制。每一滴精油都濃縮了植物數百年的生命智慧。</p>
-        <div class="highlight-box">
-          ℹ️ 精油分子透過嗅覺神經直達大腦，可在90秒內改變情緒與神經系統狀態。
-        </div>
-      </div>
-      <div class="aroma-img">🌺</div>
-    </div>
-  </div>
-</section>
-
-<!-- TUINA -->
-<section id="tuina">
-  <div class="container">
-    <div class="tuina-grid">
-      <div>
-        <span class="section-label">推拿按摩</span>
-        <h2 class="section-title">什麼是推拿按摩？源自中醫的經絡調理藝術</h2>
-        <p style="font-size:0.92rem; color:var(--mid); line-height:1.9; margin-bottom:24px;">推拿按摩源於數千年中醫理論，透過特定手法作用於人體經絡與穴位，調和氣血運行、緩解肌肉緊張、改善臟腑功能。不同於一般放鬆按摩，推拿是有系統、有方向、有深度的治療性手法。</p>
-      </div>
-      <ul class="tuina-steps">
-        <li>
-          <div class="step-num">01</div>
-          <div class="step-text">
-            <h4>望聞問切</h4>
-            <p>全面了解身體狀態與需求，制定個人化調理方向。</p>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">02</div>
-          <div class="step-text">
-            <h4>經絡疏通</h4>
-            <p>沿十二正經及奇經八脈進行系統性推拿，暢通氣血。</p>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">03</div>
-          <div class="step-text">
-            <h4>穴位點壓</h4>
-            <p>精準刺激關鍵穴位，調節臟腑功能，恢復身體平衡。</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- COMBO -->
-<section id="combo">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">核心特色</span>
-      <h2 class="section-title">芳香推拿的獨特融合：1+1 大於 2 的療癒體驗</h2>
-      <p class="section-desc" style="margin:0 auto;">當精油的芬芳滲透與推拿的手法相遇，產生的協同效果遠超過兩者相加的總和。</p>
-    </div>
-    <div class="combo-grid">
-      <div class="combo-card">
-        <div class="combo-img">🧴</div>
-        <h3>精油深層滲透</h3>
-        <p>推拿手法促進血液循環，使精油吸收率提升3至5倍，療效更加顯著持久。</p>
-      </div>
-      <div class="combo-card">
-        <div class="combo-img">🧘</div>
-        <h3>雙重放鬆機制</h3>
-        <p>嗅覺與觸覺同時啟動副交感神經，身體進入比單一療法更深層的修復狀態。</p>
-      </div>
-      <div class="combo-card">
-        <div class="combo-img">💫</div>
-        <h3>情緒與身體同癒</h3>
-        <p>精油的情緒調節效果搭配推拿的氣血疏通，實現身心靈三位一體的全方位療癒。</p>
+      <div class="phil-card">
+        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=500&h=200&fit=crop" alt="用心陪伴">
+        <div class="phil-card-body"><h3>💛 用心陪伴</h3><p>不是走流程，而是真心關心每一位朋友的身體狀況，按需要調整手法與精油配方。</p></div>
       </div>
     </div>
   </div>
@@ -722,365 +266,143 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <span class="section-label">服務項目</span>
-    <h2 class="section-title">我的服務項目</h2>
-    <p class="section-desc">每項療程均採用嚴選純天然精油，搭配專業推拿手法，為你量身打造最適合的療癒方案。</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🌿</div>
-        <h3>芳香全身推拿</h3>
-        <p>完整療程，結合精油與全身經絡推拿，深層放鬆全身肌肉與筋膜。</p>
-        <span class="service-duration">⏱ 90 分鐘</span>
+    <span class="sec-label">服務內容</span>
+    <h2 class="sec-title">我可以幫到你的</h2>
+    <p class="sec-desc">以下係我目前提供嘅服務，主要為熟悉嘅朋友及家人，歡迎查詢了解。</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <img src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="芳香全身推拿">
+        <div class="svc-body"><h3>🌿 芳香全身推拿</h3><p>結合精油與全身經絡推拿，深層放鬆肌肉與筋膜，特別適合長期肩頸痠痛或壓力大的朋友。</p><span class="svc-dur">⏱ 約 90 分鐘</span></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">☯️</div>
-        <h3>經絡疏通調理</h3>
-        <p>針對氣血阻滯、手腳冰冷、易疲勞等問題，系統性疏通十二經絡。</p>
-        <span class="service-duration">⏱ 75 分鐘</span>
+      <div class="svc-card">
+        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="經絡疏通調理">
+        <div class="svc-body"><h3>☯️ 經絡疏通調理</h3><p>針對手腳冰冷、容易疲勞、氣血不暢等情況，系統性地疏通經絡，改善整體狀態。</p><span class="svc-dur">⏱ 約 75 分鐘</span></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🌸</div>
-        <h3>頭皮舒壓放鬆</h3>
-        <p>運用玫瑰木與薄荷精油，結合頭皮穴位按摩，緩解頭痛、改善睡眠品質。</p>
-        <span class="service-duration">⏱ 60 分鐘</span>
+      <div class="svc-card">
+        <img src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="頭皮舒壓放鬆">
+        <div class="svc-body"><h3>🌸 頭皮舒壓放鬆</h3><p>配合精油與頭皮穴位按摩，緩解頭痛、眼部疲勞，幫助改善睡眠質素。</p><span class="svc-dur">⏱ 約 60 分鐘</span></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🦶</div>
-        <h3>足部反射療法</h3>
-        <p>透過足底反射區刺激對應臟腑，排除體內毒素，恢復全身機能平衡。</p>
-        <span class="service-duration">⏱ 60 分鐘</span>
+      <div class="svc-card">
+        <img src="https://images.pexels.com/photos/4507972/pexels-photo-4507972.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="足部反射療法">
+        <div class="svc-body"><h3>🦶 足部反射療法</h3><p>透過足底反射區按摩，刺激對應臟腑，舒緩全身疲勞，恢復精神狀態。</p><span class="svc-dur">⏱ 約 60 分鐘</span></div>
       </div>
     </div>
+    <div class="svc-note">💬 收費因應情況而定，歡迎直接聯絡查詢。主要為熟悉嘅朋友及家人服務，朋友介紹亦歡迎。</div>
   </div>
 </section>
 
 <!-- OILS -->
-<section id="oils" style="background:#FAFAFA;">
+<section id="oils">
   <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">精油知識</span>
-      <h2 class="section-title">精油知識專欄：三大明星精油的神奇功效</h2>
-      <p class="section-desc" style="margin:0 auto;">了解這些常用精油的特性，讓你在日常生活中也能善用芳療的力量。</p>
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">精油小知識</span>
+      <h2 class="sec-title">三款我常用的精油</h2>
+      <p class="sec-desc">呢幾款精油係我日常最常用的，特性溫和，效果顯著，適合大部分人。</p>
     </div>
     <div class="oils-grid">
       <div class="oil-card">
-        <p class="oil-name">🌾 薰衣草 Lavender</p>
-        <p>最廣為人知的萬用精油。具有強效鎮靜、安神效果，可緩解焦慮、改善睡眠品質，並對輕微燙傷與皮膚問題有修復作用。</p>
+        <img src="https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="Lavender">
+        <div class="oil-body"><p class="oil-name">🌾 薰衣草 Lavender</p><p>萬用精油之選。有助鎮靜安神、緩解焦慮、改善睡眠，對皮膚亦十分溫和友善。</p></div>
       </div>
       <div class="oil-card">
-        <p class="oil-name">🔮 乳香 Frankincense</p>
-        <p>「精油之王」，具有深層靈性凝聚效果。能放緩呼吸、沉澱心緒，同時有優異的抗炎與皮膚再生功能，適合冥想與深度放鬆療程。</p>
+        <img src="https://images.pexels.com/photos/6663573/pexels-photo-6663573.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="Frankincense">
+        <div class="oil-body"><p class="oil-name">🔮 乳香 Frankincense</p><p>有助深層放鬆、沉澱心緒。配合推拿使用效果特別好，讓人進入更深度的休息狀態。</p></div>
       </div>
       <div class="oil-card">
-        <p class="oil-name">🌿 尤加利 Eucalyptus</p>
-        <p>清新有力的呼吸系統守護者。強效抗菌、通鼻竇，能迅速提振精神，非常適合疲勞或感冒初期使用，也是肌肉酸痛的天然緩解劑。</p>
+        <img src="https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="Eucalyptus">
+        <div class="oil-body"><p class="oil-name">🌿 尤加利 Eucalyptus</p><p>清新提神，有助舒緩肌肉痠痛及呼吸不暢，疲勞或感冒初期使用效果明顯。</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section id="process">
+<!-- SHARING -->
+<section id="sharing">
   <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">療程流程</span>
-      <h2 class="section-title">從預約到療程結束的完整體驗</h2>
-      <p class="section-desc" style="margin:0 auto;">每一個環節都精心設計，讓你從踏入工作室的那一刻起，就開始感受到放鬆。</p>
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">分享與學習</span>
+      <h2 class="sec-title">持續學習，樂於分享</h2>
+      <p class="sec-desc">芳療與推拿的世界博大精深，我仍然係一個學習者，但很樂意將所學與大家分享。</p>
     </div>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="process-circle">📅</div>
-        <h4>線上預約</h4>
-        <p>選擇療程類型與時段</p>
+    <div class="share-grid">
+      <div class="share-card">
+        <img src="https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="學習">
+        <div class="share-body"><h3>📖 持續進修</h3><p>不斷學習芳療知識與推拿技巧，希望為身邊人提供更好的服務體驗。</p></div>
       </div>
-      <div class="process-step">
-        <div class="process-circle">🩺</div>
-        <h4>諮詢評估</h4>
-        <p>了解身體狀態與需求</p>
+      <div class="share-card">
+        <img src="https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="精油分享">
+        <div class="share-body"><h3>🌺 精油知識分享</h3><p>喜歡研究不同精油的特性與用法，樂意與朋友分享日常保健小知識。</p></div>
       </div>
-      <div class="process-step">
-        <div class="process-circle">🌿</div>
-        <h4>專屬準備</h4>
-        <p>調配個人精油配方</p>
-      </div>
-      <div class="process-step">
-        <div class="process-circle">🧘</div>
-        <h4>完整療程</h4>
-        <p>全程專注療癒體驗</p>
-      </div>
-      <div class="process-step">
-        <div class="process-circle">☕</div>
-        <h4>療後照護</h4>
-        <p>分享與居家建議</p>
-      </div>
-    </div>
-    <div style="text-align:center;">
-      <div class="process-note">整個療程約90至120分鐘，包含15分鐘諮詢與5分鐘療後分享，讓每次體驗都完整而有意義。</div>
-    </div>
-  </div>
-</section>
-
-<!-- SUITABLE FOR -->
-<section id="suitable">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">適合族群</span>
-      <h2 class="section-title">這些人最適合芳香推拿療程</h2>
-    </div>
-    <div class="suitable-grid">
-      <div class="suitable-card">
-        <div class="suitable-icon">💼</div>
-        <div>
-          <h3>久坐族</h3>
-          <p>長期伏案導致頸肩僵硬、腰痠背痛，推拿可有效鬆解深層肌筋膜。</p>
-        </div>
-      </div>
-      <div class="suitable-card">
-        <div class="suitable-icon">🧠</div>
-        <div>
-          <h3>壓力族</h3>
-          <p>工作與生活壓力過大，芳療精油直接作用神經系統，快速舒緩焦慮情緒。</p>
-        </div>
-      </div>
-      <div class="suitable-card">
-        <div class="suitable-icon">🌙</div>
-        <div>
-          <h3>睡眠困擾者</h3>
-          <p>入睡困難、淺眠多夢，薰衣草與羅馬洋甘菊配方能顯著提升睡眠品質。</p>
-        </div>
-      </div>
-      <div class="suitable-card">
-        <div class="suitable-icon">🌱</div>
-        <div>
-          <h3>養生保健族</h3>
-          <p>重視日常保健，定期療程是維持身心最佳狀態的投資，而非奢侈。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">客戶見證</span>
-      <h2 class="section-title">真實的療癒故事</h2>
-      <p class="section-desc" style="margin:0 auto;">每一則見證，都是最大的動力與榮耀。</p>
-    </div>
-    <div class="stats-row">
-      <div class="stat"><span class="stat-num">500+</span><div class="stat-label">滿意客戶</div></div>
-      <div class="stat"><span class="stat-num">98%</span><div class="stat-label">回購率</div></div>
-      <div class="stat"><span class="stat-num">10年</span><div class="stat-label">專業資歷</div></div>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <p>第一次體驗芳香推拿就愛上了！困擾三年的肩頸問題，做了四次療程後幾乎消失。老師的手法精準溫柔，精油的香氣讓整個人徹底放鬆。</p>
-        <div class="testi-author">— 雅婷，31歲，行銷主管</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <p>本來對推拿有點緊張，但老師在療程前很耐心地解說每個步驟，讓我完全放心。做完之後睡得比任何時候都好，隔天精神超好！</p>
-        <div class="testi-author">— 建宏，45歲，工程師</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-quote">"</div>
-        <p>長期失眠的我試過很多方法都沒效。朋友推薦來這裡後，頭皮舒壓加薰衣草配方讓我第一次感受到什麼叫做真正的放鬆入睡。強力推薦！</p>
-        <div class="testi-author">— 欣儀，28歲，護理師</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="container">
-    <span class="section-label">收費方案</span>
-    <h2 class="section-title">療程套組與收費方案</h2>
-    <p class="section-desc">透明定價，找到最適合你需求與預算的療癒方案。所有療程均含精油與耗材費用。</p>
-    <table>
-      <thead>
-        <tr>
-          <th>療程項目</th>
-          <th>時長</th>
-          <th>單次費用</th>
-          <th>五次套組</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>芳香全身推拿</td>
-          <td>90 分鐘</td>
-          <td class="tbc-cell">HK$ TBC</td>
-          <td class="tbc-cell">HK$ TBC</td>
-        </tr>
-        <tr>
-          <td>經絡疏通調理</td>
-          <td>75 分鐘</td>
-          <td class="tbc-cell">HK$ TBC</td>
-          <td class="tbc-cell">HK$ TBC</td>
-        </tr>
-        <tr>
-          <td>頭皮舒壓放鬆</td>
-          <td>60 分鐘</td>
-          <td class="tbc-cell">HK$ TBC</td>
-          <td class="tbc-cell">HK$ TBC</td>
-        </tr>
-        <tr>
-          <td>足部反射療法</td>
-          <td>60 分鐘</td>
-          <td class="tbc-cell">HK$ TBC</td>
-          <td class="tbc-cell">HK$ TBC</td>
-        </tr>
-        <tr>
-          <td>身心靈深度套程</td>
-          <td>120 分鐘</td>
-          <td class="tbc-cell">HK$ TBC</td>
-          <td class="tbc-cell">HK$ TBC</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="pricing-note">
-      ✅ 五次套組可自由搭配不同療程項目，彈性使用期限為六個月。<br>
-      💬 如需查詢最新收費，歡迎直接聯絡。
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">常見問題</span>
-      <h2 class="section-title">第一次預約前，你想知道的一切</h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-card">
-        <h4>第一次做推拿會痛嗎？</h4>
-        <p>手法力度可依個人耐受度調整，初次建議選擇輕柔療程，讓身體循序漸進適應。</p>
-      </div>
-      <div class="faq-card">
-        <h4>精油會引起過敏嗎？</h4>
-        <p>療程前會進行皮膚測試，並了解過敏史，確保選用最適合你體質的精油配方。</p>
-      </div>
-      <div class="faq-card">
-        <h4>懷孕或生理期可以做嗎？</h4>
-        <p>懷孕初期及生理期建議避免，或需特別告知以調整手法與精油種類。</p>
-      </div>
-      <div class="faq-card">
-        <h4>療程多久做一次最好？</h4>
-        <p>初期建議每週一次，待身體狀況改善後可調整為每月一至兩次定期保養。</p>
-      </div>
-      <div class="faq-card">
-        <h4>需要自備任何東西嗎？</h4>
-        <p>工作室提供全套備品，你只需帶著自己來，保持輕鬆心情即可享受完整療程。</p>
-      </div>
-      <div class="faq-card">
-        <h4>可以指定使用的精油嗎？</h4>
-        <p>當然可以！諮詢時歡迎告知喜好的香氣調性，我會為你調配最合適的專屬配方。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CARE NOTES -->
-<section id="care">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">療程須知</span>
-      <h2 class="section-title">療程前後須知：讓效果最大化</h2>
-    </div>
-    <div class="care-grid">
-      <div class="care-col">
-        <h3>🌿 療程前建議</h3>
-        <ul class="care-list">
-          <li>療程前2小時避免大量進食，保持胃部舒適。</li>
-          <li>充分補水，良好的水分有助精油代謝與吸收。</li>
-          <li>預留充足時間，避免療程後需立即趕場的壓力。</li>
-          <li>穿著寬鬆舒適衣物，方便更換療程專用袍服。</li>
-        </ul>
-      </div>
-      <div class="care-col">
-        <h3>✨ 療程後建議</h3>
-        <ul class="care-list">
-          <li>大量補充溫開水，協助代謝在療程中釋放的毒素。</li>
-          <li>療程後24小時內避免劇烈運動，讓身體充分修復。</li>
-          <li>當晚建議早些休息，把握深層修復的黃金時段。</li>
-          <li>避免立即洗澡，讓精油繼續在皮膚上發揮作用。</li>
-        </ul>
-      </div>
-    </div>
-    <div class="care-tip">
-      ✅ 遵照療前後建議，療效可提升約40%，並延長放鬆感持續時間至48小時以上。
-    </div>
-  </div>
-</section>
-
-<!-- STUDIO -->
-<section id="studio">
-  <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">工作室環境</span>
-      <h2 class="section-title">專屬私密空間，讓你完全放鬆</h2>
-    </div>
-    <div class="studio-grid">
-      <div class="studio-card">
-        <div class="studio-icon">🕯️</div>
-        <h3>氛圍設計</h3>
-        <p>溫暖燈光、天然擴香、輕柔音樂，五感全面進入放鬆模式。</p>
-      </div>
-      <div class="studio-card">
-        <div class="studio-icon">🔒</div>
-        <h3>完全私密</h3>
-        <p>獨立療程包廂，全程單人服務，讓你不受干擾地享受屬於自己的時光。</p>
-      </div>
-      <div class="studio-card">
-        <div class="studio-icon">🛁</div>
-        <h3>舒適備品</h3>
-        <p>提供有機棉浴袍、純棉床單，以及療程後的有機花草茶，細節彰顯用心。</p>
+      <div class="share-card">
+        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=400&h=180&fit=crop" alt="口碑">
+        <div class="share-body"><h3>🤝 朋友口耳相傳</h3><p>大部分朋友都係經熟人介紹，口碑對我來說比甚麼都重要。</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ACUPRESSURE -->
-<section id="acupressure">
+<section id="acupressure" style="background:linear-gradient(160deg,#f5f3ff,#ecfdf5);">
   <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">推拿穴位</span>
-      <h2 class="section-title">推拿穴位小教室：日常自我保健穴位</h2>
-      <p class="section-desc" style="margin:0 auto;">這幾個常用穴位簡單易找，日常自行按壓即可達到保健效果，是你隨身攜帶的小療癒師。</p>
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">穴位小教室</span>
+      <h2 class="sec-title">日常自我保健穴位</h2>
+      <p class="sec-desc">幾個簡單易找的穴位，平日自己按壓已經有保健效果，隨時隨地都可以做。</p>
     </div>
-    <div class="acupress-grid">
-      <div class="acu-card">
-        <div class="acu-icon">合谷</div>
-        <div>
-          <h3>合谷穴</h3>
-          <p>位於虎口處。緩解頭痛、牙痛、緊張情緒，是最易操作的萬用急救穴。</p>
-        </div>
+    <div class="acu-grid">
+      <div class="acu-card"><div class="acu-num">合谷</div><div><h3>合谷穴</h3><p>虎口位置。按壓可緩解頭痛、牙痛及緊張情緒，係最易操作的萬用穴位。</p></div></div>
+      <div class="acu-card"><div class="acu-num">太陽</div><div><h3>太陽穴</h3><p>眉尾與眼角之間的凹陷位。輕柔畫圓按壓，即時舒緩頭痛與眼部疲勞。</p></div></div>
+      <div class="acu-card"><div class="acu-num">肩井</div><div><h3>肩井穴</h3><p>肩膀最高點正中。捏壓此穴可迅速放鬆肩頸肌肉，消除久坐的僵硬感。</p></div></div>
+      <div class="acu-card"><div class="acu-num">湧泉</div><div><h3>湧泉穴</h3><p>腳底前三分之一的凹陷位。睡前按壓有助安眠，長期按壓對腎氣亦有幫助。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE -->
+<section id="care">
+  <div class="container">
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">溫馨提示</span>
+      <h2 class="sec-title">療程前後小貼士</h2>
+    </div>
+    <div class="care-grid">
+      <div class="care-col">
+        <h3>🌿 療程前建議</h3>
+        <ul class="care-list">
+          <li>療程前2小時避免大量進食。</li>
+          <li>多喝水，有助精油代謝與吸收。</li>
+          <li>預留充足時間，放鬆心情來。</li>
+          <li>穿著寬鬆舒適的衣物。</li>
+        </ul>
       </div>
-      <div class="acu-card">
-        <div class="acu-icon">太陽</div>
-        <div>
-          <h3>太陽穴</h3>
-          <p>位於眉尾與眼角之間凹陷處。輕柔畫圓按壓，即時舒緩頭痛與眼部疲勞。</p>
-        </div>
+      <div class="care-col">
+        <h3>✨ 療程後建議</h3>
+        <ul class="care-list">
+          <li>多喝溫開水，協助代謝。</li>
+          <li>24小時內避免劇烈運動。</li>
+          <li>當晚早點休息，效果更好。</li>
+          <li>暫緩即時洗澡，讓精油繼續發揮。</li>
+        </ul>
       </div>
-      <div class="acu-card">
-        <div class="acu-icon">肩井</div>
-        <div>
-          <h3>肩井穴</h3>
-          <p>位於肩膀最高點正中。捏壓此穴可迅速放鬆肩頸肌肉，消除久坐僵硬感。</p>
-        </div>
-      </div>
-      <div class="acu-card">
-        <div class="acu-icon">湧泉</div>
-        <div>
-          <h3>湧泉穴</h3>
-          <p>位於腳底前三分之一凹陷處。睡前按壓可引氣下行，幫助安眠並補充腎氣。</p>
-        </div>
-      </div>
+    </div>
+    <div class="care-tip">💛 跟住以上小貼士，療效可以維持更長時間，身體放鬆感亦會更持久。</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">常見問題</span>
+      <h2 class="sec-title">你可能想知道的</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card"><h4>第一次做推拿會痛嗎？</h4><p>手法力度會因應個人耐受度調整，初次建議輕柔一點，讓身體慢慢適應。</p></div>
+      <div class="faq-card"><h4>精油會引起過敏嗎？</h4><p>療程前會了解過敏情況，並選用最適合你體質的精油配方，安全第一。</p></div>
+      <div class="faq-card"><h4>懷孕或生理期可以做嗎？</h4><p>懷孕初期及生理期建議避免，或事先告知以便調整手法與精油種類。</p></div>
+      <div class="faq-card"><h4>多久做一次比較好？</h4><p>視乎個人狀況，一般建議每月一至兩次作為日常保健，有需要時可增加頻率。</p></div>
+      <div class="faq-card"><h4>需要自備東西嗎？</h4><p>唔需要，所有用品都會準備好，你只需要帶著自己來就可以了。</p></div>
+      <div class="faq-card"><h4>可以指定精油嗎？</h4><p>當然可以！告知喜好的香氣，我會盡量配合調配最適合你的配方。</p></div>
     </div>
   </div>
 </section>
@@ -1088,44 +410,24 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div style="text-align:center; margin-bottom:40px;">
-      <span class="section-label">聯絡我們</span>
-      <h2 class="section-title">有任何問題，歡迎隨時與我聯繫</h2>
-      <p class="section-desc">無論你有疑問、想了解更多療程資訊，或只是想聊聊身心狀況，我都在這裡等你。</p>
+    <div class="center" style="margin-bottom:40px;">
+      <span class="sec-label">聯絡我</span>
+      <h2 class="sec-title">有任何問題，隨時聯絡</h2>
+      <p class="sec-desc">無論你想了解更多，或者只是想聊聊，都歡迎搵我。</p>
     </div>
     <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-icon">📧</div>
-        <h4>電子郵件</h4>
-        <p><a href="mailto:arohealsite@gmail.com">arohealsite@gmail.com</a><br>通常在24小時內回覆</p>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <h4>地區</h4>
-        <p>Hong Kong 🇭🇰</p>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">💬</div>
-        <h4>社交媒體</h4>
-        <p>X / Twitter: <a href="https://x.com/arohealsite" target="_blank">@arohealsite</a></p>
-      </div>
+      <div class="contact-item"><div class="contact-icon">📧</div><h4>電郵</h4><p><a href="mailto:arohealsite@gmail.com">arohealsite@gmail.com</a></p></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><h4>地區</h4><p>Hong Kong 🇭🇰</p></div>
+      <div class="contact-item"><div class="contact-icon">💬</div><h4>社交媒體</h4><p><a href="https://x.com/arohealsite" target="_blank">@arohealsite</a></p></div>
     </div>
-
-    <div class="contact-socials">
-      <a href="https://x.com/arohealsite" target="_blank" class="social-btn social-x">
-        𝕏 @arohealsite
-      </a>
-      <a href="#" class="social-btn social-ig">
-        📷 Instagram <span class="tbc-tag">TBC</span>
-      </a>
-      <a href="#" class="social-btn social-wa">
-        💬 WhatsApp <span class="tbc-tag">TBC</span>
-      </a>
+    <div class="socials">
+      <a href="https://x.com/arohealsite" target="_blank" class="soc-btn soc-x">𝕏 @arohealsite</a>
+      <a href="#" class="soc-btn soc-ig">📷 Instagram <span class="tbc">TBC</span></a>
+      <a href="#" class="soc-btn soc-wa">💬 WhatsApp <span class="tbc">TBC</span></a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>AroHeal <span>香推療癒</span> © 2025 | Hong Kong 🇭🇰 | <a href="mailto:arohealsite@gmail.com" style="color:var(--lavender)">arohealsite@gmail.com</a></p>
 </footer>
