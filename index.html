@@ -156,8 +156,22 @@ section{padding:72px 5%;}
 .soc-wa{background:#25D366;color:white;}
 .tbc{background:rgba(245,158,11,0.2);color:var(--gold);font-size:0.7rem;padding:2px 8px;border-radius:50px;font-weight:600;}
 
-footer{background:#0F0D2E;color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:0.82rem;}
-footer span{color:var(--coral);}
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;gap:8px;}
+.font-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--lavender);background:white;color:var(--purple);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.font-btn:hover{background:var(--purple-light);}
+.lang-btn{padding:6px 14px;border-radius:50px;border:1.5px solid var(--lavender);background:white;color:var(--purple);font-size:0.8rem;font-weight:700;cursor:pointer;transition:background 0.2s;}
+.lang-btn:hover{background:var(--purple-light);}
+.lang-btn.active{background:linear-gradient(135deg,var(--coral),var(--purple));color:white;border-color:transparent;}
+
+/* HIDE/SHOW language content */
+.en{display:none;}
+.zh{display:block;}
+body.lang-en .en{display:block;}
+body.lang-en .zh{display:none;}
+span.en,span.zh{display:inline;}
+body.lang-en span.zh{display:none;}
+body.lang-en span.en{display:inline;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
@@ -177,32 +191,39 @@ footer span{color:var(--coral);}
 <nav>
   <a href="#hero" class="nav-brand">AroHeal</a>
   <ul class="nav-links">
-    <li><a href="#about">關於我</a></li>
-    <li><a href="#services">服務</a></li>
-    <li><a href="#oils">精油</a></li>
+    <li><a href="#about"><span class="zh">關於我</span><span class="en">About</span></a></li>
+    <li><a href="#services"><span class="zh">服務</span><span class="en">Services</span></a></li>
+    <li><a href="#oils"><span class="zh">精油</span><span class="en">Oils</span></a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contact" class="nav-cta">聯絡我</a></li>
+    <li><a href="#contact" class="nav-cta"><span class="zh">聯絡我</span><span class="en">Contact</span></a></li>
   </ul>
+  <div class="toolbar">
+    <button class="font-btn" onclick="changeFontSize(-1)" title="字體縮小">A-</button>
+    <button class="font-btn" onclick="changeFontSize(1)" title="字體放大">A+</button>
+    <button class="lang-btn zh active" id="langBtn" onclick="toggleLang()">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-badge">✦ 香推療癒 · AroHeal</div>
+    <div class="hero-badge">✦ <span class="zh">香推療癒</span><span class="en">Natural Healing</span> · AroHeal</div>
     <img class="hero-avatar" src="avatar.png" alt="AroHeal V">
     <h1 class="hero-title">AroHeal</h1>
-    <p class="hero-sub">香推療癒</p>
+    <p class="hero-sub"><span class="zh">香推療癒</span><span class="en">Aroma & Tuina Healing</span></p>
     <div class="hero-tags">
-      <span class="hero-tag">🌸 芳香療法</span>
-      <span class="hero-tag">🙌 推拿按摩</span>
-      <span class="hero-tag">🌿 身心舒緩</span>
+      <span class="hero-tag">🌸 <span class="zh">芳香療法</span><span class="en">Aromatherapy</span></span>
+      <span class="hero-tag">🙌 <span class="zh">推拿按摩</span><span class="en">Tuina Massage</span></span>
+      <span class="hero-tag">🌿 <span class="zh">身心舒緩</span><span class="en">Holistic Wellness</span></span>
     </div>
-    <p class="hero-bio">以香氛與推拿，為身邊人帶來舒緩與療癒 🌸<br>興趣出發，用心服務，持續學習中。</p>
-    <p class="hero-bio-cn">透過自然療法，為家人與朋友帶來放鬆與舒適。</p>
+    <p class="hero-bio">
+      <span class="zh">以香氛與推拿，為身邊人帶來舒緩與療癒 🌸<br>興趣出發，用心服務，持續學習中。</span>
+      <span class="en">Bringing relaxation and healing to family and friends through aromatherapy and tuina massage 🌸<br>Passion-driven, heart-centred, always learning.</span>
+    </p>
     <p class="hero-loc">📍 Hong Kong</p>
     <div class="btn-group">
-      <a href="#contact" class="btn-primary">聯絡我</a>
-      <a href="#services" class="btn-secondary">了解更多</a>
+      <a href="#contact" class="btn-primary"><span class="zh">聯絡我</span><span class="en">Contact Me</span></a>
+      <a href="#services" class="btn-secondary"><span class="zh">了解更多</span><span class="en">Learn More</span></a>
     </div>
   </div>
 </section>
@@ -223,12 +244,21 @@ footer span{color:var(--coral);}
         <img src="https://images.pexels.com/photos/3997993/pexels-photo-3997993.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="About AroHeal">
       </div>
       <div class="about-text">
-        <span class="sec-label">關於我</span>
-        <h2 class="sec-title">興趣出發，用心療癒</h2>
-        <p>接觸芳療與推拿按摩已有多年，起初純粹出於對天然精油的好奇與喜愛，慢慢深入了解東方經絡與推拿的智慧，發現兩者結合原來可以為身心帶來意想不到的舒緩效果。</p>
-        <p>我並非全職治療師，而是以個人興趣與熱誠，為身邊的家人及朋友提供輕鬆舒適的療癒體驗。學習的路仍在繼續，每一次服務都是一次成長。</p>
+        <span class="sec-label"><span class="zh">關於我</span><span class="en">About Me</span></span>
+        <h2 class="sec-title"><span class="zh">興趣出發，用心療癒</span><span class="en">Passion-Driven, Heart-Centred</span></h2>
+        <p>
+          <span class="zh">接觸芳療與推拿按摩已有多年，起初純粹出於對天然精油的好奇與喜愛，慢慢深入了解東方經絡與推拿的智慧，發現兩者結合原來可以為身心帶來意想不到的舒緩效果。</span>
+          <span class="en">I've been exploring aromatherapy and tuina massage for many years, starting from pure curiosity about natural essential oils. Gradually I discovered how combining Eastern meridian theory with Western aromatherapy can bring unexpected relief to the body and mind.</span>
+        </p>
+        <p>
+          <span class="zh">我並非全職治療師，而是以個人興趣與熱誠，為身邊的家人及朋友提供輕鬆舒適的療癒體驗。學習的路仍在繼續，每一次服務都是一次成長。</span>
+          <span class="en">I am not a full-time therapist — I offer this as a personal passion, serving family and close friends with a warm and comfortable healing experience. The learning journey continues, and every session is a chance to grow.</span>
+        </p>
         <div class="warm-box">
-          <p>「療癒不一定要去診所，有時候一雙溫暖的手、一縷精油香氣，已經足夠讓人放鬆下來。」</p>
+          <p>
+            <span class="zh">「療癒不一定要去診所，有時候一雙溫暖的手、一縷精油香氣，已經足夠讓人放鬆下來。」</span>
+            <span class="en">"Healing doesn't always require a clinic — sometimes a pair of warm hands and the scent of essential oils is all it takes to truly unwind."</span>
+          </p>
         </div>
       </div>
     </div>
@@ -263,28 +293,28 @@ footer span{color:var(--coral);}
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <span class="sec-label">服務內容</span>
-    <h2 class="sec-title">我可以幫到你的</h2>
-    <p class="sec-desc">以下係我目前提供嘅服務，主要為熟悉嘅朋友及家人，歡迎查詢了解。</p>
+    <span class="sec-label"><span class="zh">服務內容</span><span class="en">Services</span></span>
+    <h2 class="sec-title"><span class="zh">我可以幫到你的</span><span class="en">How I Can Help</span></h2>
+    <p class="sec-desc"><span class="zh">以下係我目前提供嘅服務，主要為熟悉嘅朋友及家人，歡迎查詢了解。</span><span class="en">The following services are mainly offered to family and close friends. Feel free to enquire.</span></p>
     <div class="svc-grid">
       <div class="svc-card">
         <img src="https://images.pexels.com/photos/3997989/pexels-photo-3997989.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="芳香全身推拿">
-        <div class="svc-body"><h3>🌿 芳香全身推拿</h3><p>結合精油與全身經絡推拿，深層放鬆肌肉與筋膜，特別適合長期肩頸痠痛或壓力大的朋友。</p><span class="svc-dur">⏱ 約 90 分鐘</span></div>
+        <div class="svc-body"><h3>🌿 <span class="zh">芳香全身推拿</span><span class="en">Aroma Full Body Massage</span></h3><p><span class="zh">結合精油與全身經絡推拿，深層放鬆肌肉與筋膜，特別適合長期肩頸痠痛或壓力大的朋友。</span><span class="en">Combining essential oils with full-body meridian massage to deeply relax muscles, ideal for those with chronic neck/shoulder pain or high stress.</span></p><span class="svc-dur">⏱ <span class="zh">約</span><span class="en">~</span> 90 <span class="zh">分鐘</span><span class="en">mins</span></span></div>
       </div>
       <div class="svc-card">
         <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="經絡疏通調理">
-        <div class="svc-body"><h3>☯️ 經絡疏通調理</h3><p>針對手腳冰冷、容易疲勞、氣血不暢等情況，系統性地疏通經絡，改善整體狀態。</p><span class="svc-dur">⏱ 約 75 分鐘</span></div>
+        <div class="svc-body"><h3>☯️ <span class="zh">經絡疏通調理</span><span class="en">Meridian Therapy</span></h3><p><span class="zh">針對手腳冰冷、容易疲勞、氣血不暢等情況，系統性地疏通經絡，改善整體狀態。</span><span class="en">Targeting cold hands/feet, fatigue and poor circulation through systematic meridian clearing to improve overall wellbeing.</span></p><span class="svc-dur">⏱ <span class="zh">約</span><span class="en">~</span> 75 <span class="zh">分鐘</span><span class="en">mins</span></span></div>
       </div>
       <div class="svc-card">
         <img src="https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=600&h=200&fit=crop" alt="頭皮舒壓放鬆">
-        <div class="svc-body"><h3>🌸 頭皮舒壓放鬆</h3><p>配合精油與頭皮穴位按摩，緩解頭痛、眼部疲勞，幫助改善睡眠質素。</p><span class="svc-dur">⏱ 約 60 分鐘</span></div>
+        <div class="svc-body"><h3>🌸 <span class="zh">頭皮舒壓放鬆</span><span class="en">Scalp Relaxation</span></h3><p><span class="zh">配合精油與頭皮穴位按摩，緩解頭痛、眼部疲勞，幫助改善睡眠質素。</span><span class="en">Using essential oils and scalp acupoint massage to relieve headaches, eye fatigue and improve sleep quality.</span></p><span class="svc-dur">⏱ <span class="zh">約</span><span class="en">~</span> 60 <span class="zh">分鐘</span><span class="en">mins</span></span></div>
       </div>
       <div class="svc-card">
         <img src="foot-massage.jpeg" alt="足部反射療法">
-        <div class="svc-body"><h3>🦶 足部反射療法</h3><p>透過足底反射區按摩，刺激對應臟腑，舒緩全身疲勞，恢復精神狀態。</p><span class="svc-dur">⏱ 約 60 分鐘</span></div>
+        <div class="svc-body"><h3>🦶 <span class="zh">足部反射療法</span><span class="en">Foot Reflexology</span></h3><p><span class="zh">透過足底反射區按摩，刺激對應臟腑，舒緩全身疲勞，恢復精神狀態。</span><span class="en">Stimulating reflex zones on the sole to activate corresponding organs, relieve fatigue and restore energy.</span></p><span class="svc-dur">⏱ <span class="zh">約</span><span class="en">~</span> 60 <span class="zh">分鐘</span><span class="en">mins</span></span></div>
       </div>
     </div>
-    <div class="svc-note">💬 收費因應情況而定，歡迎直接聯絡查詢。主要為熟悉嘅朋友及家人服務，朋友介紹亦歡迎。</div>
+    <div class="svc-note">💬 <span class="zh">收費因應情況而定，歡迎直接聯絡查詢。主要為熟悉嘅朋友及家人服務，朋友介紹亦歡迎。</span><span class="en">Pricing is flexible and discussed personally. Services are mainly for family and close friends — referrals are welcome.</span></div>
   </div>
 </section>
 
@@ -394,12 +424,12 @@ footer span{color:var(--coral);}
       <h2 class="sec-title">你可能想知道的</h2>
     </div>
     <div class="faq-grid">
-      <div class="faq-card"><h4>第一次做推拿會痛嗎？</h4><p>手法力度會因應個人耐受度調整，初次建議輕柔一點，讓身體慢慢適應。</p></div>
-      <div class="faq-card"><h4>精油會引起過敏嗎？</h4><p>療程前會了解過敏情況，並選用最適合你體質的精油配方，安全第一。</p></div>
-      <div class="faq-card"><h4>懷孕或生理期可以做嗎？</h4><p>懷孕初期及生理期建議避免，或事先告知以便調整手法與精油種類。</p></div>
-      <div class="faq-card"><h4>多久做一次比較好？</h4><p>視乎個人狀況，一般建議每月一至兩次作為日常保健，有需要時可增加頻率。</p></div>
-      <div class="faq-card"><h4>需要自備東西嗎？</h4><p>唔需要，所有用品都會準備好，你只需要帶著自己來就可以了。</p></div>
-      <div class="faq-card"><h4>可以指定精油嗎？</h4><p>當然可以！告知喜好的香氣，我會盡量配合調配最適合你的配方。</p></div>
+      <div class="faq-card"><h4><span class="zh">第一次做推拿會痛嗎？</span><span class="en">Will tuina hurt the first time?</span></h4><p><span class="zh">手法力度會因應個人耐受度調整，初次建議輕柔一點，讓身體慢慢適應。</span><span class="en">Pressure is adjusted to your comfort level. A gentler technique is recommended for first-timers.</span></p></div>
+      <div class="faq-card"><h4><span class="zh">精油會引起過敏嗎？</span><span class="en">Can essential oils cause allergies?</span></h4><p><span class="zh">療程前會了解過敏情況，並選用最適合你體質的精油配方，安全第一。</span><span class="en">Allergy history is checked before each session, and the most suitable oils are selected for your skin type.</span></p></div>
+      <div class="faq-card"><h4><span class="zh">懷孕或生理期可以做嗎？</span><span class="en">Can I come during pregnancy or period?</span></h4><p><span class="zh">懷孕初期及生理期建議避免，或事先告知以便調整手法與精油種類。</span><span class="en">Early pregnancy and menstruation are generally advised to avoid, or please inform in advance to adjust the approach.</span></p></div>
+      <div class="faq-card"><h4><span class="zh">多久做一次比較好？</span><span class="en">How often should I come?</span></h4><p><span class="zh">視乎個人狀況，一般建議每月一至兩次作為日常保健，有需要時可增加頻率。</span><span class="en">Generally once or twice a month for maintenance, with frequency adjusted based on your condition.</span></p></div>
+      <div class="faq-card"><h4><span class="zh">需要自備東西嗎？</span><span class="en">Do I need to bring anything?</span></h4><p><span class="zh">唔需要，所有用品都會準備好，你只需要帶著自己來就可以了。</span><span class="en">No, everything is prepared. Just bring yourself and come with a relaxed mind.</span></p></div>
+      <div class="faq-card"><h4><span class="zh">可以指定精油嗎？</span><span class="en">Can I choose my oils?</span></h4><p><span class="zh">當然可以！告知喜好的香氣，我會盡量配合調配最適合你的配方。</span><span class="en">Of course! Share your scent preferences and I'll blend the most suitable formula for you.</span></p></div>
     </div>
   </div>
 </section>
@@ -408,9 +438,9 @@ footer span{color:var(--coral);}
 <section id="contact">
   <div class="container">
     <div class="center" style="margin-bottom:40px;">
-      <span class="sec-label">聯絡我</span>
-      <h2 class="sec-title">有任何問題，隨時聯絡</h2>
-      <p class="sec-desc">無論你想了解更多，或者只是想聊聊，都歡迎搵我。</p>
+      <span class="sec-label"><span class="zh">聯絡我</span><span class="en">Contact</span></span>
+      <h2 class="sec-title"><span class="zh">有任何問題，隨時聯絡</span><span class="en">Get in Touch Anytime</span></h2>
+      <p class="sec-desc"><span class="zh">無論你想了解更多，或者只是想聊聊，都歡迎搵我。</span><span class="en">Whether you have questions or just want to chat, feel free to reach out.</span></p>
     </div>
     <div class="contact-grid">
       <div class="contact-item"><div class="contact-icon">📧</div><h4>電郵</h4><p><a href="mailto:arohealsite@gmail.com">arohealsite@gmail.com</a></p></div>
@@ -429,5 +459,30 @@ footer span{color:var(--coral);}
   <p>AroHeal <span>香推療癒</span> © 2025 | Hong Kong 🇭🇰 | <a href="mailto:arohealsite@gmail.com" style="color:var(--lavender)">arohealsite@gmail.com</a></p>
 </footer>
 
+<script>
+// Font size
+let fontSize = 16;
+function changeFontSize(delta){
+  fontSize = Math.min(22, Math.max(12, fontSize + delta));
+  document.body.style.fontSize = fontSize + 'px';
+}
+
+// Language toggle
+let isEn = false;
+function toggleLang(){
+  isEn = !isEn;
+  const btn = document.getElementById('langBtn');
+  if(isEn){
+    document.body.classList.add('lang-en');
+    btn.textContent = '中文';
+    btn.classList.add('active');
+    document.documentElement.lang = 'en';
+  } else {
+    document.body.classList.remove('lang-en');
+    btn.textContent = 'EN';
+    document.documentElement.lang = 'zh-HK';
+  }
+}
+</script>
 </body>
 </html>
